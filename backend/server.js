@@ -25,7 +25,7 @@ app.listen(PORT, () => {
 
 //------------------------  USER  ------------------------
 
-app.post('/create/user', (req, res) => {
+app.post('/user', (req, res) => {
     if (!req.body.email || !req.body.password || !req.body.username) {
         return res.status(400).json({ message: 'Error. Please enter a username, an email and a password' })
     }
@@ -34,7 +34,7 @@ app.post('/create/user', (req, res) => {
         .catch(error => res.status(500).json(error))
 })
 
-app.post('/delete/user', (req, res) => {
+app.delete('/user', (req, res) => {
     if (!req.body.email || !req.body.password) {
         return res.status(400).json({ message: 'Error. Please enter an email and a password' })
     }
@@ -52,11 +52,8 @@ app.post('/login', (req, res) => {
         .catch(error => res.status(500).json(error))
 })
 
-app.post('/get/user', (req, res) => {
-    if (!req.body.id) {
-        return res.status(400).json({ message: 'Error. Please enter an id' })
-    }
-    userDB.getUserById(req.body.id)
+app.get('/user/:userId', (req, res) => {
+    userDB.getUserById(req.params.userId)
         .then(result => res.status(200).json(result))
         .catch(error => res.status(500).json(error))
 })
