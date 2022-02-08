@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { hasher, compareHash } from "../Crypto";
+import { hasher, compareHash } from "../Crypto.js";
 
 export default class User {
     constructor(uri, salt) {
