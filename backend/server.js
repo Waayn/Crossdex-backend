@@ -13,11 +13,11 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
+app.use('/user', userRoutes)
+app.use('/pokemons', pokemonRoutes)
+
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });
-
-app.use('/user', userRoutes)
-app.use('/pokemons', pokemonRoutes)
 
 export { app }
